@@ -1,0 +1,13 @@
+{
+  "name": "shopbrick-btcpay-mock",
+  "private": true,
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "ejs": "^3",
+    "express": "^5",
+    "uuid": "^11"
+  }
+}

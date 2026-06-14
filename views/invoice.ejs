@@ -1,0 +1,15 @@
+<h1>Mock BTCPay Invoice</h1>
+
+<p>ID: <%= invoice.id %>
+</p>
+
+<p>Status: <%= invoice.status %>
+</p>
+
+<form method="post" action="/pay/<%= invoice.id %>/settle">
+  <button>Pay</button>
+</form>
+
+<form method="post" action="/pay/<%= invoice.id %>/expire">
+  <button>Expire</button>
+</form>
