@@ -2,6 +2,7 @@ const express = require('express')
 const {v4: uuid} = require('uuid')
 const {loadInvoices, saveInvoices} = require('./src/storage')
 const {buildRedirectUrl, calculateAmount} = require('./src/invoice')
+const {currencySymbol} = require('./src/currencies')
 
 const app = express()
 app.set('view engine', 'ejs')
@@ -134,7 +135,7 @@ app.get('/invoices', (req, res) => {
     settled: rows.filter(x => x.status === 'Settled').length,
     expired: rows.filter(x => x.status === 'Expired').length
   }
-  res.render('invoices', {invoices: rows, stats})
+  res.render('invoices', {invoices: rows, stats, currencySymbol})
 })
 
 app.listen(9000, () => {

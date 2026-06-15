@@ -134,7 +134,7 @@
           </td>
 
           <td>
-            £<%= invoice.amount %>
+            <%= currencySymbol[invoice.metadata.cart[0].currency] %><%= invoice.amount %>
           </td>
 
           <td>
