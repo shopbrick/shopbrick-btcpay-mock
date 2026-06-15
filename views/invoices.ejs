@@ -1,0 +1,115 @@
+<!doctype html>
+
+<html>
+
+<head>
+  <title>
+    BTCPay Mock Invoices
+  </title>
+
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 20px;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    th,
+    td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #f5f5f5;
+    }
+
+    pre {
+      margin: 0;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>
+    Invoices
+  </h1>
+
+  <p>
+    Total:
+    <%= stats.total %>
+  </p>
+  
+  <p>
+    Settled:
+    <%= stats.settled %>
+  </p>
+  
+  <p>
+    Expired:
+    <%= stats.expired %>
+  </p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>
+          Invoice ID
+        </th>
+
+        <th>
+          Status
+        </th>
+
+        <th>
+          Created
+        </th>
+
+        <th>
+          Amount
+        </th>
+
+        <th>
+          Metadata
+        </th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% invoices.forEach(invoice=> { %>
+        <tr>
+          <td>
+            <a href="/pay/<%= invoice.id %>">
+              <%= invoice.id %>
+            </a>
+          </td>
+
+          <td>
+            <%= invoice.status %>
+          </td>
+
+          <td>
+            <%= invoice.createdAt %>
+          </td>
+
+          <td>
+            £<%= invoice.amount %>
+          </td>
+
+          <td>
+            <pre><%= JSON.stringify(invoice.metadata, null, 2) %></pre>
+          </td>
+        </tr>
+        <% }) %>
+    </tbody>
+  </table>
+</body>
+
+</html>

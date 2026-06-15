@@ -1,15 +1,33 @@
 <h1>Mock BTCPay Invoice</h1>
 
-<p>ID: <%= invoice.id %>
-</p>
+<p>ID: <%= invoice.id %></p>
 
-<p>Status: <%= invoice.status %>
-</p>
+<p>Status: <%= invoice.status %></p>
 
 <form method="post" action="/pay/<%= invoice.id %>/settle">
-  <button>Pay</button>
+  <button>
+    Pay
+  </button>
 </form>
 
 <form method="post" action="/pay/<%= invoice.id %>/expire">
-  <button>Expire</button>
+  <button>
+    Expire
+  </button>
 </form>
+
+<a href="/pay/<%= invoice.id %>/return">
+  Return to Shop
+</a>
+
+<% if (invoice.checkout?.redirectURL) { %>
+  <hr>
+
+  <p>
+    Redirect URL:
+  </p>
+
+  <code>
+    <%= invoice.checkout.redirectURL %>
+  </code>
+<% } %>
